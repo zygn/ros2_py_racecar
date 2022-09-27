@@ -11,7 +11,7 @@
    git clone https://github.com/zygn/ros2_py_racecar
     ```
    
-2. Building package with using [Colcon]() 
+2. Building package with using [Colcon](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html) 
    ```commandline
    colcon build --packages-select ros2_py_racecar 
    . install/setup.bash 
