@@ -24,10 +24,14 @@
 
 If you want Hotfix, try this one-line command.
 ```commandline
-colcon build --packages-select ros2_py_racecar && . install/setup.bash &&  ros2 run ros2_py_racecar racecar 
+colcon build --packages-select ros2_py_racecar && . install/setup.bash && ros2 run ros2_py_racecar racecar 
 ```
 
 ## Changing Planner 
 TODO
 
-## 
+## Related Project
+
+- [F1TENTH](https://f1tenth.org/)
+- [F1TENTH Racecar](https://github.com/f1tenth/f1tenth_system)
+- [F1TENTH gym environment ROS2 communication bridge](https://github.com/f1tenth/f1tenth_gym_ros)
