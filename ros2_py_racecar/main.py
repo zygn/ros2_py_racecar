@@ -55,7 +55,7 @@ class Racecar(Node):
         # planner declaration
         self.planner = Planner(self.wheelbase)
 
-    def publish_callback(self):
+    def publish_callback(self, _finally=None):
         """
         Publish to /drive topic.
 
@@ -69,6 +69,9 @@ class Racecar(Node):
             speed, steer = self.planner.driving(self.scan_data, self.odom_data)
         else:
             self.get_logger().error("Planner doesn't have `plan` or `driving` function.")
+            speed, steer = 0.0, 0.0
+
+        if _finally:
             speed, steer = 0.0, 0.0
 
         msg.drive.speed = speed
@@ -117,6 +120,7 @@ def main(args=None):
         rclpy.spin(racecar)
     except KeyboardInterrupt:
         racecar.get_logger().info("Keyboard Interrupt")
+        racecar.publish_callback(_finally=True)
     finally:
         racecar.destroy_node()
         rclpy.shutdown()
