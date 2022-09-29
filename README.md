@@ -1,7 +1,7 @@
 
 # ros2_py_racecar
 
-*F1TENTH RACECAR ROS2(rclpy) Binding.*
+F1TENTH Racecar driving algorithm planner binding for ROS2(rclpy)
 
 ---
 ## Quickstart
