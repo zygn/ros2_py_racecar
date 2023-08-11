@@ -81,7 +81,7 @@ class Racecar(Node):
 
         msg.drive.speed = speed
         msg.drive.steering_angle = steer
-        self.get_logger().info(f"speed: {speed}, steer: {steer}"
+        self.get_logger().info(f"speed: {speed}, steer: {steer}")
 
         self.pub.publish(msg)
 
