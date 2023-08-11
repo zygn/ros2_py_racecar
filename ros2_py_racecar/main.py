@@ -42,7 +42,7 @@ class Racecar(Node):
         self.timer = self.create_timer((1 / self.Hz), self.publish_callback)
 
         self.scan_data = {
-            'ranges': LaserScan.ranges,
+            'ranges': [],
         }
         self.odom_data = {
             'pose_x': 0.0,

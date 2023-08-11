@@ -7,13 +7,13 @@ F1TENTH Racecar driving algorithm planner binding for ROS2(rclpy)
 ## Quickstart
 1. Clone this repository in where you want workspace. 
     ```commandline
-   cd ~/f1tenth_ws/
+   cd ~/f1tenth_ws/src
    git clone https://github.com/zygn/ros2_py_racecar
     ```
    
 2. Building package with using [Colcon](https://docs.ros.org/en/foxy/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html) 
    ```commandline
-   colcon build --packages-select ros2_py_racecar 
+   cd .. && colcon build --packages-select ros2_py_racecar 
    . install/setup.bash 
    ```
 
