@@ -64,6 +64,10 @@ class Racecar(Node):
         """
         msg = AckermannDriveStamped()
 
+        if not self.scan_data['ranges']:
+            self.get_logger().warn("LaserScan data is empty.")
+            return
+
         if hasattr(self.planner, 'plan'):
             speed, steer = self.planner.plan(self.scan_data, self.odom_data)
         elif hasattr(self.planner, 'driving'):
