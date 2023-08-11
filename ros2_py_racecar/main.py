@@ -2,7 +2,7 @@ import rclpy
 import numpy as np
 
 from rclpy.node import Node
-from rclpy.qos import QoSProfile
+from rclpy.qos import QoSProfile, qos_profile_sensor_data
 
 from ackermann_msgs.msg import AckermannDriveStamped
 from sensor_msgs.msg import LaserScan
@@ -33,8 +33,8 @@ class Racecar(Node):
 
         self.pub = self.create_publisher(AckermannDriveStamped, drive_topic, qos_profile)
         self.sub = {
-            'laser': self.create_subscription(LaserScan, laser_topic, self.laser_callback, qos_profile),
-            'odom': self.create_subscription(Odometry, odom_topic, self.odom_callback, qos_profile)
+            'laser': self.create_subscription(LaserScan, laser_topic, self.laser_callback, qos_profile=qos_profile_sensor_data),
+            'odom': self.create_subscription(Odometry, odom_topic, self.odom_callback, qos_profile=qos_profile_sensor_data)
         }
 
         self.wheelbase = wheelbase
