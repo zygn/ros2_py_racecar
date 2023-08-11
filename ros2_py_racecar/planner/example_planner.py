@@ -1,5 +1,37 @@
 import numpy as np
 
+class WallFollowPlanner:
+
+    def __init__(self):
+        self._speed = 1.5
+        self._steering_angle = 0.0
+        self._desired_distance = 1.2
+
+    def plan(self, scan_data, odom_data):
+        """
+        Plan the path.
+        """
+
+        scan = scan_data['ranges']
+
+        if len(scan) == 0:
+            return 0.0, 0.0
+
+        # Laser scan data is 270 degress, and angular resolution is 0.25 degrees
+        #  = 1080 data points
+
+        # Left side
+        if scan[720] < self._desired_distance:
+            self._steering_angle = -0.5
+        # Right side
+        elif scan[360] < self._desired_distance:
+            self._steering_angle = 0.5
+        else:
+            self._steering_angle = 0.0
+
+        return self._speed, self._steering_angle
+
+
 class FgPlanner:
     BUBBLE_RADIUS = 160
     PREPROCESS_CONV_SIZE = 100  # PREPROCESS_consecutive_SIZE

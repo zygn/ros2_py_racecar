@@ -9,7 +9,8 @@ from sensor_msgs.msg import LaserScan
 from nav_msgs.msg import Odometry
 
 # Import your planner and linking to `Planner`
-from .planner.example_planner import FgPlanner as Planner
+from .planner.example_planner import WallFollowPlanner as Planner
+# from .planner.example_planner import FgPlanner as Planner
 
 class Racecar(Node):
 
@@ -20,7 +21,7 @@ class Racecar(Node):
 
         drive_topic = self.declare_parameter('drive_topic', '/drive').value
         laser_topic = self.declare_parameter('laser_topic', '/scan').value
-        odom_topic = self.declare_parameter('odom_topic', '/ego_racecar/odom').value
+        odom_topic = self.declare_parameter('odom_topic', '/odom').value
         hz = self.declare_parameter('hz', 100).value
         wheelbase = self.declare_parameter('wheelbase', 0.3302).value
 
@@ -53,7 +54,7 @@ class Racecar(Node):
         }
 
         # planner declaration
-        self.planner = Planner(self.wheelbase)
+        self.planner = Planner()
 
     def publish_callback(self, _finally=None):
         """
